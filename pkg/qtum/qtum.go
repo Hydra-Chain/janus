@@ -138,13 +138,13 @@ func (c *Qtum) ChainId() int {
 	var chainId int
 	switch strings.ToLower(c.Chain()) {
 	case "main":
-		chainId = 81
+		chainId = 1
 	case "test":
-		chainId = 8889
+		chainId = 2
 	case "regtest":
 		chainId = 8890
 	default:
-		chainId = 8890
+		chainId = 1
 		c.GetDebugLogger().Log("msg", fmt.Sprintf("Unknown chain %d", chainId))
 	}
 
@@ -179,8 +179,8 @@ func (c *Qtum) GenerateIfPossible() {
 type HexAddressPrefix string
 
 const (
-	PrefixMainChainAddress    HexAddressPrefix = "3a"
-	PrefixTestChainAddress    HexAddressPrefix = "78"
+	PrefixMainChainAddress    HexAddressPrefix = "28"
+	PrefixTestChainAddress    HexAddressPrefix = "42"
 	PrefixRegTestChainAddress HexAddressPrefix = PrefixTestChainAddress
 )
 
