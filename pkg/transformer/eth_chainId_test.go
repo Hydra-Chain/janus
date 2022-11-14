@@ -10,11 +10,11 @@ import (
 )
 
 func TestChainIdMainnet(t *testing.T) {
-	testChainIdsImpl(t, "main", "0x51")
+	testChainIdsImpl(t, "main", "0x1")
 }
 
 func TestChainIdTestnet(t *testing.T) {
-	testChainIdsImpl(t, "test", "0x22b9")
+	testChainIdsImpl(t, "test", "0x2")
 }
 
 func TestChainIdRegtest(t *testing.T) {
@@ -22,7 +22,7 @@ func TestChainIdRegtest(t *testing.T) {
 }
 
 func TestChainIdUnknown(t *testing.T) {
-	testChainIdsImpl(t, "???", "0x22ba")
+	testChainIdsImpl(t, "???", "0x1")
 }
 
 func testChainIdsImpl(t *testing.T, chain string, expected string) {
