@@ -31,8 +31,8 @@ func ParseCallASM(parts []string) (*ContractInvokeInfo, error) {
 	// Contract Address      // contract address
 	// OP_CALL
 
-	if len(parts) != 6 {
-		return nil, errors.New(fmt.Sprintf("invalid OP_CALL script for parts 6: %v", parts))
+	if len(parts) != 5 {
+		return nil, errors.New(fmt.Sprintf("invalid OP_CALL script for parts 5: %v", parts))
 	}
 
 	gasLimit, err := convertToBigEndian(parts[1])
@@ -41,10 +41,10 @@ func ParseCallASM(parts []string) (*ContractInvokeInfo, error) {
 	}
 
 	return &ContractInvokeInfo{
-		GasPrice: parts[2],
+		GasPrice: "777", // hardcoded for hydra
 		GasLimit: gasLimit,
-		CallData: parts[3],
-		To:       parts[4],
+		CallData: parts[2],
+		To:       parts[3],
 	}, nil
 
 }
@@ -54,8 +54,8 @@ func ParseCallSenderASM(parts []string) (*ContractInvokeInfo, error) {
 
 	// "1 7926223070547d2d15b2ef5e7383e541c338ffe9 69463043021f3ba540f52e0bae0c608c3d7135424fb683c77ee03217fcfe0af175c586aadc02200222e460a42268f02f130bc46f3ef62f228dd8051756dc13693332423515fcd401210299d391f528b9edd07284c7e23df8415232a8ce41531cf460a390ce32b4efd112 OP_SENDER 4 40000000 40 60fe47b10000000000000000000000000000000000000000000000000000000000000319 9e11fba86ee5d0ba4996b0d1973de6b694f4fc95 OP_CALL"
 
-	if len(parts) != 10 {
-		return nil, errors.New(fmt.Sprintf("invalid create_sender script for parts 10: %v", parts))
+	if len(parts) != 9 {
+		return nil, errors.New(fmt.Sprintf("invalid create_sender script for parts 9: %v", parts))
 	}
 
 	// 1    // address type of the pubkeyhash (public key hash)
@@ -76,10 +76,10 @@ func ParseCallSenderASM(parts []string) (*ContractInvokeInfo, error) {
 
 	return &ContractInvokeInfo{
 		From:     parts[1],
-		GasPrice: parts[6],
+		GasPrice: "777",
 		GasLimit: gasLimit,
-		CallData: parts[7],
-		To:       parts[8],
+		CallData: parts[6],
+		To:       parts[7],
 	}, nil
 
 }
@@ -92,8 +92,8 @@ func ParseCreateASM(parts []string) (*ContractInvokeInfo, error) {
 	// 1234                  // data to be sent by the contract
 	// OP_CREATE
 
-	if len(parts) != 5 {
-		return nil, errors.New(fmt.Sprintf("invalid OP_CREATE script for parts 5: %v", len(parts)))
+	if len(parts) != 4 {
+		return nil, errors.New(fmt.Sprintf("invalid OP_CREATE script for parts 4: %v", len(parts)))
 	}
 
 	gasLimit, err := convertToBigEndian(parts[1])
@@ -102,9 +102,9 @@ func ParseCreateASM(parts []string) (*ContractInvokeInfo, error) {
 	}
 
 	info := &ContractInvokeInfo{
-		GasPrice: parts[2],
+		GasPrice: "777",
 		GasLimit: gasLimit,
-		CallData: parts[3],
+		CallData: parts[2],
 	}
 	return info, nil
 
@@ -132,8 +132,8 @@ func ParseCreateSenderASM(parts []string) (*ContractInvokeInfo, error) {
 	// 1234                  // data to be sent by the contract
 	// OP_CREATE
 
-	if len(parts) != 9 {
-		return nil, errors.New(fmt.Sprintf("invalid create_sender script for parts 9: %v", len(parts)))
+	if len(parts) != 8 {
+		return nil, errors.New(fmt.Sprintf("invalid create_sender script for parts 8: %v", len(parts)))
 	}
 
 	gasLimit, err := convertToBigEndian(parts[5])
@@ -143,9 +143,9 @@ func ParseCreateSenderASM(parts []string) (*ContractInvokeInfo, error) {
 
 	info := &ContractInvokeInfo{
 		From:     parts[1],
-		GasPrice: parts[6],
+		GasPrice: "777",
 		GasLimit: gasLimit,
-		CallData: parts[7],
+		CallData: parts[6],
 	}
 	return info, nil
 }
