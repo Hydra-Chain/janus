@@ -1,7 +1,7 @@
 package transformer
 
 import (
-	"github.com/ethereum/go-ethereum/common/hexutil"
+	// "github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/labstack/echo"
 	"github.com/qtumproject/janus/pkg/eth"
 	"github.com/qtumproject/janus/pkg/qtum"
@@ -25,6 +25,6 @@ func (p *ProxyETHNetVersion) request() (*eth.NetVersionResponse, eth.JSONRPCErro
 	if err != nil {
 		return nil, err
 	}
-	response := eth.NetVersionResponse(hexutil.EncodeBig(networkID))
+	response := eth.NetVersionResponse(networkID.String())
 	return &response, nil
 }
