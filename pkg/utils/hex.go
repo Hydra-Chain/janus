@@ -24,6 +24,9 @@ func IsEthHexAddress(str string) bool {
 }
 
 func AddHexPrefix(hex string) string {
+	if hex == "" {
+		hex = "00"
+	}
 	if strings.HasPrefix(hex, "0x") {
 		return hex
 	}
