@@ -43,6 +43,8 @@ func (p *ProxyETHCall) request(ctx context.Context, ethreq *eth.CallRequest) (in
 
 	qtumresp, err := p.CallContract(ctx, qtumreq)
 	if err != nil {
+		p.Qtum.GetLogger().Log("msg", "Error", err)
+
 		if err == qtum.ErrInvalidAddress {
 			qtumresp := eth.CallResponse("0x")
 			return &qtumresp, nil
@@ -50,6 +52,8 @@ func (p *ProxyETHCall) request(ctx context.Context, ethreq *eth.CallRequest) (in
 
 		return nil, eth.NewCallbackError(err.Error())
 	}
+
+	p.Qtum.GetLogger().Log("msg", "resp", qtumresp)
 
 	// qtum res -> eth res
 	return p.ToResponse(qtumresp), nil

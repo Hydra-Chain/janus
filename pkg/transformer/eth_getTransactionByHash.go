@@ -164,7 +164,7 @@ func getTransactionByHash(ctx context.Context, p *qtum.Qtum, hash string) (*eth.
 			}
 		}
 		//TODO: research if 'To' adress could be other than zero address when 'isContractTx == TRUE'
-		if len(qtumTxContractInfo.To) == 0 {
+		if len(qtumTxContractInfo.To) < 40 {
 			ethTx.To = utils.AddHexPrefix(qtum.ZeroAddress)
 		} else {
 			ethTx.To = utils.AddHexPrefix(qtumTxContractInfo.To)
@@ -174,6 +174,11 @@ func getTransactionByHash(ctx context.Context, p *qtum.Qtum, hash string) (*eth.
 		if len(qtumTxContractInfo.GasLimit) == 0 {
 			qtumTxContractInfo.GasLimit = "0"
 		}
+		// if len(qtumTxContractInfo.From) < 40 {
+		// 	ethTx.From = utils.AddHexPrefix(qtum.ZeroAddress)
+		// } else {
+		// 	ethTx.From = utils.AddHexPrefix(qtumTxContractInfo.From)
+		// }
 		ethTx.Gas = utils.AddHexPrefix(qtumTxContractInfo.GasLimit)
 
 		// trim leading zeros from gasPrice
@@ -205,7 +210,7 @@ func getTransactionByHash(ctx context.Context, p *qtum.Qtum, hash string) (*eth.
 		// TODO: discuss
 		// ? Does func above return incorrect address for graph-node (len is < 40)
 		// ! Temporary solution
-		if ethTx.From == "" {
+		if len(ethTx.From) < 40 {
 			ethTx.From = utils.AddHexPrefix(qtum.ZeroAddress)
 		}
 	}
