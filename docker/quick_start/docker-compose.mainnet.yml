@@ -30,16 +30,3 @@ services:
     networks:
       - common_network
 
-  # qtum_mainnet:
-  #   ports:
-  #     - "3890:3890"
-  #   image: qtum/qtum
-  #   container_name: qtum_mainnet
-  #   environment:
-  #     - COMPOSE_PROJECT_NAME=mainnet
-  #   command: qtumd  -txindex -addrindex=1 -rpcbind=0.0.0.0:3890 -rpcallowip=0.0.0.0/0 -rpcuser=qtum -rpcpassword=testpasswd -deprecatedrpc=accounts
-  #   volumes:
-  #     - qtumd_mainnet_volume:/root/.qtum
-  #   networks:
-  #     - qtumd_mainnet_network
-
