@@ -7,6 +7,8 @@ volumes:
 
 services:
   janus_mainnet:
+    env_file:
+      - ../.env
     image: qtum/janus:latest
     container_name: janus_mainnet
     build:
@@ -16,15 +18,15 @@ services:
     ports:
       - "23890:23890"
     environment:
-      - QTUM_RPC=https://user:pass@testnet.hydra.nodes.changex.io
+      - QTUM_RPC=${RPC_URL}
       - COMPOSE_PROJECT_NAME=mainnet
     volumes:
-      - ../standalone/myaccounts.txt:/Users/ivaylopetrov/Dev/janus/myaccounts.txt
+      - ../standalone/myaccounts.txt:$GOPATH/janus/myaccounts.txt
       - ../../https:/https
       - ../../logs:/logs
     # depends_on:
     #   - qtum_mainnet
-    command: --bind 0.0.0.0 --port 23890 --ignoreTransactions --accounts /Users/ivaylopetrov/Dev/janus/myaccounts.txt --dev --https-key /https/key.pem --https-cert /https/cert.pem
+    command: --bind 0.0.0.0 --port 23890 --ignoreTransactions --accounts $GOPATH/janus/myaccounts.txt --dev --https-key /https/key.pem --https-cert /https/cert.pem
     networks:
       - common_network
 
