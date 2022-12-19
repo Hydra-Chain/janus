@@ -7,7 +7,7 @@ volumes:
 
 services:
   janus_regtest:
-    image: qtum/janus:dev
+    image: ipetrov22/janus:dev
     container_name: janus_regtest
     build: 
         context: ../../

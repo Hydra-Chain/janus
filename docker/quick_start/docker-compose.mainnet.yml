@@ -9,7 +9,7 @@ services:
   janus_mainnet:
     env_file:
       - ../.env
-    image: qtum/janus:latest
+    image: ipetrov22/janus:latest
     container_name: janus_mainnet
     build:
       context: ../../

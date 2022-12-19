@@ -91,10 +91,10 @@ quick-start-testnet:
 quick-start-mainnet:
 	cd docker && ./spin_up.mainnet.sh && cd ..
 
-# docker build -t qtum/janus:latest -t qtum/janus:dev -t qtum/janus:${GIT_TAG} -t qtum/janus:${GIT_REV} --build-arg BUILDPLATFORM="$(BUILDPLATFORM)" .
+# docker build -t ipetrov22/janus:latest -t ipetrov22/janus:dev -t ipetrov22/janus:${GIT_TAG} -t ipetrov22/janus:${GIT_REV} --build-arg BUILDPLATFORM="$(BUILDPLATFORM)" .
 .PHONY: docker-dev
 docker-dev:
-	docker build -t qtum/janus:latest -t qtum/janus:dev -t qtum/janus:${GIT_TAG} -t qtum/janus:${GIT_REV} --build-arg GO_VERSION=1.18 .
+	docker build -t ipetrov22/janus:latest -t ipetrov22/janus:dev -t ipetrov22/janus:${GIT_TAG} -t ipetrov22/janus:${GIT_REV} --build-arg GO_VERSION=1.18 .
 
 .PHONY: local-dev
 local-dev: check-env install

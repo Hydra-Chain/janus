@@ -1,13 +1,13 @@
 version: "3.3"
 services:
   janus:
-    image: qtum/janus:dev
+    image: ipetrov22/janus:dev
     build:
       context: ../../
       dockerfile: ./Dockerfile
       cache_from:
         - golang:3.16-alpine
-        - qtum/janus:dev
+        - ipetrov22/janus:dev
     ports:
       - "23889:23889"
     environment:
@@ -29,12 +29,12 @@ services:
     container_name: qtum_seeded_testchain
     command: qtumd -regtest -addrindex -txindex -rpcbind=0.0.0.0:3889 -rpcallowip=0.0.0.0/0 -logevents -rpcuser=qtum -rpcpassword=testpasswd -deprecatedrpc=accounts -printtoconsole
   openzeppelin:
-    image: qtum/janus-openzeppelin
+    image: ipetrov22/janus-openzeppelin
     build:
       context: .
       dockerfile: ./openzeppelin.Dockerfile
       cache_from:
-        - qtum/janus-openzeppelin
+        - ipetrov22/janus-openzeppelin
     environment:
       - GENERATE_TO_ADDRESS=qW28njWueNpBXYWj2KDmtFG2gbLeALeHfV
     depends_on:
