@@ -2,3 +2,4 @@
 /.qtum
 /supervisord.*
 /env.list
+.env
