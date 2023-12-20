@@ -4,6 +4,20 @@
 # Qtum adapter to Ethereum JSON RPC
 Janus is a web3 proxy adapter that can be used as a web3 provider to interact with Qtum. It supports HTTP(s) and websockets and the current version enables self hosting of keys.
 
+## To run for HYDRA
+```
+git clone https://github.com/Hydra-Chain/janus.git
+cd janus
+```
+Create `.env` file in `janus/docker` folder:
+```
+RPC_URL=""
+```
+Run in `janus` folder:
+```
+make quick-start-mainnet
+```
+
 # Table of Contents
 
 - [Quick start](#quick-start)
