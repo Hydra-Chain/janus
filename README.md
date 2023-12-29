@@ -18,6 +18,9 @@ Run in `janus` folder:
 make quick-start-mainnet
 ```
 
+Runs on ports 23890
+-   `janus` running on port 23890
+
 # Table of Contents
 
 - [Quick start](#quick-start)
