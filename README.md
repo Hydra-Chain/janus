@@ -13,6 +13,37 @@ nano /janus/docker/quick_start/docker-compose.mainnet.yml
 ```
 Set the exact same network interface under all mentions of ```networks:```
 
+- Sample docker-compose.mainnet.yml
+```
+version: "3.3"
+
+networks:
+  docker_common_network:
+    external: true
+
+services:
+  janus_mainnet:
+    env_file:
+      - ../.env
+    image: ipetrov22/janus:latest
+    container_name: janus_mainnet
+    build:
+      context: ../../
+      cache_from:
+        - golang:1.18-alpine
+    ports:
+      - "23890:23890"
+    environment:
+      - QTUM_RPC=${RPC_URL}
+      - COMPOSE_PROJECT_NAME=mainnet
+    volumes:
+      - ../../https:/https
+      - ../../logs:/logs
+    command: --bind 0.0.0.0 --port 23890 --ignoreTransactions --dev --https-key /https/key.pem --https-cert /https/cert.pem
+    networks:
+      - docker_common_network
+```
+
 After the network is configured, run the Adapter and check the logs of the docker to ensure it is connecting with the RPC node and pulling data.
 
 ```
