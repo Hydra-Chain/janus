@@ -5,7 +5,7 @@
 Janus is a web3 proxy adapter that can be used as a web3 provider to interact with Qtum. It supports HTTP(s) and websockets and the current version enables self hosting of keys.
 
 ## To run for HYDRA
-
+Builds successful with Node v18.19.0 after deleting yarn.lock and node_modules
 NB!Make sure to align the networks in the yml config file for docker.
 
 ```
