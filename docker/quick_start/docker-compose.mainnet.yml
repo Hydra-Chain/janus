@@ -15,6 +15,8 @@ services:
         - golang:1.18-alpine
     ports:
       - "23890:23890"
+    logging:
+      driver: local
     environment:
       - QTUM_RPC=${RPC_URL}
       - COMPOSE_PROJECT_NAME=mainnet
